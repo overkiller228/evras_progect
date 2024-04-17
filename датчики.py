@@ -1,21 +1,18 @@
-import telebot;
-import socket
-s.bind(('localhost', 3030)) # Привязываем серверный сокет к localhost и 3030 порту.
-s.listen(1) # Начинаем прослушивать входящие соединения
-conn, addr = s.accept()
-while True: # Создаем вечный цикл.
-	data = conn.recv(1024) # Получаем данные из сокета.
-	if not data:
-		break
-	conn.sendall(data) # Отправляем данные в сокет.
-	print(data.decode('utf-8')) # Выводим информацию на печать.
-conn.close()
-import socket
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('localhost', 3030)) # Подключаемся к нашему серверу.
-s.sendall('Hello, Habr!'.encode('utf-8')) # Отправляем фразу.
-data = s.recv(1024) #Получаем данные из сокета.
-s.close()
+import telebot
+# import socket
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#
+# s.bind(('localhost', 3030))
+# s.listen(1)
+# conn, addr = s.accept()
+#
+# while True:
+# 	data = conn.recv(1024)
+# 	if not data:
+# 		break
+# 	conn.sendall(data)
+# 	print(data.decode('utf-8'))
+# conn.close()
 
 
 
@@ -40,6 +37,15 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, "напиши состояние")
     else:
         bot.send_message(message.from_user.id, "состояние. Напиши /sostoy.")
+
+
+
+    if message.text == "вправо":
+        bot.send_message(message.from_user.id, "ок")
+    elif message.text == "/dvpravo":
+        bot.send_message(message.from_user.id, "напиши направление")
+    else:
+        bot.send_message(message.from_user.id, "движение. Напиши /dvpravo.")
 
 
 
